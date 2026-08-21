@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت بازی حکم آنلاین</title>
+    <style>
+        * { box-sizing: border-box; font-family: Tahoma, sans-serif; }
+        body { 
+            background: #1a1a2e; 
+            color: #fff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 10px;
+        }
+        .chat-container { 
+            width: 100%; 
+            max-width: 420px; 
+            height: 90vh; 
+            max-height: 600px;
+            background: #16213e; 
+            border-radius: 14px; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+        .chat-header { 
+            background: #0f3460; 
+            padding: 14px 16px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .chat-header h3 { margin: 0; font-size: 16px; }
+        .chat-messages { 
+            flex: 1; 
+            padding: 16px; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+        .hokm-chat-message { 
+            max-width: 82%; 
+            padding: 10px 14px; 
+            border-radius: 10px; 
+            font-size: 14px; 
+            line-height: 1.5;
+            word-break: break-word; 
+        }
+        .is-mine { 
+            align-self: flex-start; 
+            background: #e94560; 
+            color: #fff; 
+            border-bottom-right-radius: 2px;
+        }
+        .is-other { 
+            align-self: flex-end; 
+            background: #0f3460; 
+            color: #eee; 
+            border-bottom-left-radius: 2px;
+        }
+        .is-system { 
+            align-self: center; 
+            background: #533483; 
+            font-size: 12px; 
+            text-align: center; 
+            border-radius: 20px;
+            padding: 4px 12px;
+        }
+        .hokm-chat-message-header { 
+            font-size: 11px; 
+            opacity: 0.8; 
+            margin-bottom: 4px; 
+            display: flex; 
+            justify-content: space-between; 
+            gap: 10px; 
+        }
+        .chat-input-area { 
+            display: flex; 
+            padding: 12px; 
+            background: #0f3460; 
+            gap: 8px; 
+        }
+        .chat-input-area input { 
+            flex: 1; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px solid #1a1a2e; 
+            outline: none; 
+            background: #1a1a2e; 
+            color: #fff; 
+            font-size: 14px;
+        }
+        .chat-input-area button { 
+            padding: 0 18px; 
+            background: #e94560; 
+            color: #fff; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold;
+        }
+        .chat-input-area button:active { background: #c7364e; }
+        .hokm-chat-empty { text-align: center; margin-top: 120px; color: #888; }
+        .hokm-chat-empty-icon { font-size: 32px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container" data-chat>
+        <div class="chat-header">
+            <h3>💬 چت روم حکم آنلاین</h3>
+            <button data-chat-mute style="background:none;border:none;font-size:18px;cursor:pointer;">🔊</button>
+        </div>
+        
+        <div class="chat-messages" data-chat-messages id="chatMessages"></div>
+
+        <div class="chat-input-area">
+            <input type="text" data-chat-input id="chatInput" placeholder="پیامی بنویسید...">
+            <button data-chat-send id="chatSend">ارسال</button>
+        </div>
+    </div>
+
+    <!-- بارگذاری اسکریپت چت -->
+    <script src="chat.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.hokmChat) {
+                window.hokmChat.setRoom("hokm-room-default");
+            }
+        });
+    </script>
+</body>
+</html>
 
