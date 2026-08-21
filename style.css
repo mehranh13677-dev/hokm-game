@@ -1,0 +1,711 @@
+/* =========================================================
+   HOKM ONLINE - MOBILE LUXURY CASINO EDITION
+   style.css
+   نسخه کامل، بهینه‌شده برای موبایل و گرافیک حرفه‌ای کازینویی
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&display=swap');
+
+/* =========================================================
+   1. RESET & BASE
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: radial-gradient(circle at 50% 10%, #152644 0%, #0a1322 55%, #040810 100%);
+    color: #ffffff;
+    direction: rtl;
+    overflow: hidden;
+    position: fixed;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================================================
+   2. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --bg-main: #060b14;
+    --bg-secondary: #0f192d;
+    --bg-card: rgba(22, 35, 60, 0.85);
+    --bg-card-strong: rgba(30, 48, 82, 0.95);
+    --border: rgba(255, 255, 255, 0.14);
+    --gold: #f6c84c;
+    --gold-dark: #c8971f;
+    --gold-glow: rgba(246, 200, 76, 0.45);
+    --green: #2ecc71;
+    --green-dark: #1e824c;
+    --green-table: radial-gradient(circle at center, #1b6e3f 0%, #11502c 65%, #062311 100%);
+    --red: #ff4757;
+    --blue: #3867d6;
+    --purple: #8854d0;
+    --text: #ffffff;
+    --text-secondary: #a4b0be;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --radius: 16px;
+    --transition: 0.2s ease;
+}
+
+/* =========================================================
+   3. APP & SCREEN SYSTEM (موبایل پرتره)
+   ========================================================= */
+
+#app {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    background: radial-gradient(circle at 50% 10%, #152644 0%, #0a1322 55%, #040810 100%);
+    padding-bottom: 75px;
+}
+
+.screen.active-screen,
+.screen.page-active,
+.screen.active {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.screen-inner {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 14px;
+}
+
+/* =========================================================
+   4. HEADER
+   ========================================================= */
+
+.app-header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 18, 32, 0.92);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 8px 12px;
+}
+
+.header-inner {
+    max-width: 480px;
+    min-height: 44px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.logo,
+.home-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.guest-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-card);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    color: white;
+    border: 1px solid var(--border);
+}
+
+/* =========================================================
+   5. COIN BALANCE
+   ========================================================= */
+
+.coin-balance,
+.coin-display {
+    min-height: 32px;
+    padding: 4px 10px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(246, 200, 76, 0.12);
+    border: 1px solid var(--gold-glow);
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 12px;
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.coin-icon {
+    font-size: 15px;
+}
+
+/* =========================================================
+   6. HERO & WELCOME CARD
+   ========================================================= */
+
+.hero-section {
+    padding-top: 10px;
+}
+
+.hero-card,
+.home-welcome {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 16px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(28, 46, 82, 0.8), rgba(11, 20, 36, 0.95));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin-bottom: 14px;
+}
+
+.home-eyebrow {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 800;
+    margin-bottom: 6px;
+    text-shadow: 0 0 8px var(--gold-glow);
+}
+
+.hero-title,
+.home-welcome h1 {
+    font-size: clamp(20px, 5vw, 28px);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.hero-description,
+.home-welcome p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   7. GAME ACTION BUTTONS (موبایل فریم)
+   ========================================================= */
+
+.game-actions,
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.primary-action,
+.secondary-action,
+.action-btn,
+.primary-button,
+.secondary-button,
+.danger-button {
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 800;
+    font-size: 13px;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.primary-action,
+.primary-button,
+.action-btn-gold {
+    background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+    color: #1a1508;
+    border: none;
+}
+
+.secondary-action,
+.secondary-button {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid var(--border);
+}
+
+.action-btn-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: #fff;
+    border: none;
+}
+
+.action-btn-green {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    color: #fff;
+    border: none;
+}
+
+.action-btn-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    color: #fff;
+    border: none;
+}
+
+.danger-button {
+    background: linear-gradient(135deg, #ff5a6c, #db3044);
+    color: white;
+}
+
+.full-span {
+    grid-column: span 2;
+}
+
+/* =========================================================
+   8. TRUMP SELECTION SCREEN
+   ========================================================= */
+
+.trump-screen {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: radial-gradient(circle at center, #172846 0%, #0b1424 60%, #050a12 100%);
+}
+
+.trump-container {
+    width: 100%;
+    max-width: 380px;
+    padding: 24px 18px;
+    text-align: center;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(25, 42, 77, 0.9), rgba(11, 20, 36, 0.98));
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.trump-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 6px;
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+.trump-description {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.suits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.suit-button {
+    min-height: 95px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.suit-symbol {
+    font-size: 36px;
+    line-height: 1;
+}
+
+.suit-name {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.suit-red, .suit-red .suit-symbol { color: var(--red); }
+.suit-black, .suit-black .suit-symbol { color: #ffffff; }
+
+/* =========================================================
+   9. CASINO CARD TABLE (میز بازی موبایل - اصلاح جایگاه نام‌ها و حکم)
+   ========================================================= */
+
+.game-screen {
+    padding-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden !important;
+    position: relative;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(10, 18, 32, 0.92);
+    border-bottom: 1px solid var(--border);
+    z-index: 20;
+}
+
+.game-turn-info {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow: 0 0 8px var(--gold-glow);
+}
+
+/* حکم در گوشه سمت چپ بالای میز */
+.trump-display {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 30;
+    background: rgba(11, 20, 36, 0.92);
+    border: 1px solid var(--gold);
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 900;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 10px var(--gold-glow);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.game-table,
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--green-table);
+    border: 8px solid #3d1b0a;
+    border-radius: 50%;
+    padding: 15px;
+    margin: auto;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85), 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* نام بازیکنان کاملاً خارج از میز و طراحی لوکس و جذاب */
+.table-player {
+    position: absolute;
+    min-width: 100px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(15, 25, 45, 0.95), rgba(8, 14, 25, 0.98));
+    border: 1px solid var(--gold);
+    text-align: center;
+    z-index: 25;
+    font-size: 11px;
+    font-weight: 800;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 10px rgba(246, 200, 76, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.table-player-north, .top-player { top: -22px; left: 50%; transform: translateX(-50%); }
+.table-player-south, .bottom-player { bottom: -22px; left: 50%; transform: translateX(-50%); }
+.table-player-west, .left-player { left: -35px; top: 50%; transform: translateY(-50%); }
+.table-player-east, .right-player { right: -35px; top: 50%; transform: translateY(-50%); }
+
+.game-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* تفکیک دقیق اسلات‌های کارت‌های روی میز برای هر بازیکن */
+.trick-area, .played-cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.played-card-slot {
+    position: absolute;
+    width: 48px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* موقعیت دقیق کارت بازی‌شده هر بازیکن در مرکز میز */
+#trickNorth { top: 25%; left: 50%; transform: translateX(-50%); }
+#trickSouth { bottom: 25%; left: 50%; transform: translateX(-50%); }
+#trickWest  { top: 50%; left: 28%; transform: translateY(-50%); }
+#trickEast  { top: 50%; right: 28%; transform: translateY(-50%); }
+
+/* =========================================================
+   10. PLAYING CARDS (کارت‌های موبایل)
+   ========================================================= */
+
+.playing-card,
+.game-card {
+    position: relative;
+    width: 48px;
+    height: 70px;
+    flex: 0 0 auto;
+    border-radius: 7px;
+    background: linear-gradient(145deg, #ffffff 0%, #e6edf5 100%);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    color: #121826;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.playing-card.playable:hover,
+.game-card:not(.card-disabled):hover {
+    transform: translateY(-8px) scale(1.04);
+}
+
+.red-card, .card-red, .suit-hearts, .suit-diamonds { color: var(--red); }
+.black-card, .card-black, .suit-spades, .suit-clubs { color: #1e272e; }
+
+.card-corner, .card-top {
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.card-center-symbol, .card-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+.player-hand-container,
+.hand-container {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 4px;
+    background: rgba(5, 10, 20, 0.6);
+    border-top: 1px solid var(--border);
+    scrollbar-width: none;
+    z-index: 40;
+}
+
+.hand-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================================================
+   11. BOTTOM NAVIGATION
+   ========================================================= */
+
+.bottom-navigation {
+    position: fixed;
+    z-index: 200;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    background: rgba(8, 14, 25, 0.98);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+}
+
+.nav-item,
+.bottom-nav-item {
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.nav-item span:first-child,
+.bottom-nav-item span:first-child {
+    font-size: 16px;
+}
+
+.nav-item.active,
+.bottom-nav-item.active {
+    color: var(--gold);
+    background: rgba(246, 200, 76, 0.08);
+}
+
+/* =========================================================
+   12. TOAST & MODAL
+   ========================================================= */
+
+#toast {
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 75px;
+    transform: translate(-50%, 20px);
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(18, 28, 49, 0.98);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    font-size: 12px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+#modalOverlay, .modal-root {
+    position: fixed;
+    z-index: 500;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+}
+
+#modalOverlay.hidden, .modal-root.hidden {
+    display: none !important;
+}
+
+.modal {
+    width: 100%;
+    max-width: 360px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #101828;
+    border: 1px solid var(--border);
+}
+
+/* =========================================================
+   13. UTILITIES
+   ========================================================= */
+
+.hidden { display: none !important; }
